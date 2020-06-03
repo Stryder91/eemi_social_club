@@ -30,15 +30,16 @@
       <div class="container pt-5">
 
         <div class="section-title">
-          <h2>Nos associations</h2>
+          <h2>Je suis président de ces associations : </h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
 		<?php 
-         $sql = "select * from associations";
-         $query = mysqli_query($lien,$sql);
-         while ($result = mysqli_fetch_assoc($query)){
+		$myMail = $_SESSION['email'];
+		$sql = "select * from associations where admin_asso='$myMail'";
+		$query = mysqli_query($lien,$sql);
+		while ($result = mysqli_fetch_assoc($query)){
         ?>
 			<div class="col-lg-4 col-md-6 d-flex align-items-stretch"  data-aos-delay="100">
 			<div class="icon-box iconbox-blue">
@@ -51,8 +52,8 @@
 				</div>
 				<h4><?php echo $result['name_asso'];?></h4>
 				<p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-				<a href="candidature.php?id=<?php echo $result['_id_asso'];?>">
-					<button class="btn btn-primary mt-5">Rejoindre</button>
+				<a href="asso.php?id=<?php echo $result['_id_asso'];?>">
+					<button class="btn btn-primary mt-5">Voir plus</button>
 				</a>
 			</div>
 			</div>

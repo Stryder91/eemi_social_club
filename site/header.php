@@ -1,11 +1,20 @@
-<?php $base_url = "http://localhost/workshop_eemi_social_club"; ?>
-<?php $base_asso = "http://localhost/workshop_eemi_social_club/site/associations.php"; ?>
-<?php $base_calendar = "http://localhost/workshop_eemi_social_club/site/calendrier.php"; ?>
-<?php $base_deco = "http://localhost/workshop_eemi_social_club/site/deco.php"; ?>
+<!-- http://ltran.eemi.tech/Lionel/workshop_eemi_social_club/ -->
 
-<?php $base_register = "http://localhost/workshop_eemi_social_club/site/register.php"; ?>
+<?php 
+$distant = 'http://ltran.eemi.tech/Lionel/workshop_eemi_social_club/';
+$local = 'http://localhost/workshop_eemi_social_club';
 
-<?php $base_img = "http://localhost/workshop_eemi_social_club/assets/img/logo.png"; ?>
+$base_url = $local; 
+$base_asso = $local."/site/associations.php";
+$base_calendar = $local."/site/calendrier.php";
+$base_deco = $local."/site/deco.php";
+$base_register = $local."/site/register.php"; 
+$base_img = $local."/assets/img/logo.png"; 
+
+// Logged
+$base_asso_perso = $local."/site/asso_perso.php"; 
+
+?>
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
@@ -22,7 +31,7 @@
 			<li><a href="<?php echo $base_asso ?>">Candidature</a></li>
 			<li class="drop-down"><a href="">Espace membre</a>
 			<ul>
-				<li><a href="#">Mon association</a></li>
+				<li><a href="<?php echo $base_asso_perso ?>">Mes associations</a></li>
 				<li><a href="#">Calendrier partagé</a></li>
 				<li><a href="#">Candidatures</a></li>
 				<li><a href="#">Evènements internes</a></li>
