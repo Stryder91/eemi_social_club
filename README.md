@@ -1,10 +1,10 @@
 # Thanks to Back Office Bootstrap 
 > [Start Bootstrap - SB Admin 2](https://startbootstrap.com/template-overviews/sb-admin-2/)
+and
 > [OnePage](https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/) Author : BootstrapMade.com, License : ttps://bootstrapmade.com/license/
 
 ___________________
-
-# Connect to a MYSQL server with :
+# Pour connecter à la base de donnée :
 ```
 <?php
 session_start();
