@@ -4,7 +4,7 @@ and
 > [OnePage](https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/) Author : BootstrapMade.com, License : ttps://bootstrapmade.com/license/
 
 ___________________
-# Pour connecter à la base de donnée :
+# Pour connecter à la base de donnée, créer un fichier config.inc.php à mettre dans le dosser admin/ :
 ```
 <?php
 session_start();

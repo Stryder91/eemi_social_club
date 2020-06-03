@@ -26,43 +26,45 @@
 </head>
 <body>
 	<?php include('header.php');?>
-	<!-- Inscription -->
-	<section>
-		<form action="register_post.php" method="POST">
-		<div class="container mt-5 pt-5 col-lg-6">
-			<h1>Inscription</h1>
-			<p>Rejoignez nous!</p>
-			<hr>
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Entrer Email" name="email" id="email" class="form-control" required>
+	 <!-- ======= Services Section ======= -->
+	 <section id="services" class="services section-bg">
+      <div class="container  p-5">
 
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Entrer Password" name="psw" id="psw"  class="form-control" required>
-			<hr>
+        <div class="row">
+		<?php 
+			$id = $_GET['id'];
+			$sql = "select * from associations where _id_asso='$id'";
+			$query = mysqli_query($lien,$sql);
+			while ($result = mysqli_fetch_assoc($query)){
+		?>
+		<form class="form-group" action="candidater_post.php?id=<?php echo $id;?>" method="POST">
+			<div class="container d-flex flex-column">
+				<div class="d-flex justify-content-between mt-5">
+					<div>
+						<h3>Candidater chez </h3> <br/>
+						<h1><?php echo $result['name_asso'];?></h1>
+					</div>
+					<div class="col-3">
+						<img style="width: 100%;" src="<?php echo $result['logo_asso'];?>" alt="logo">
+					</div>
+				</div>
+				<hr>
+				<label for="email"><b>Ton adresse-email:</b></label>
+				<input type="text" placeholder="Entrer Email" name="email" id="email" class="form-control" required>
 
-			<p>En cliquant sur s'inscrire vous acceptez nos <a href="#"> termes & conditions</a>.</p>
-			<button type="submit" class="btn btn-info">S'inscrire</button>
-		</div>
+				<textarea class="form-control mt-3" name="motivation" cols="30" rows="10" placeholder="Dis pourquoi tu veux rejoindre cette association"></textarea>
+				<hr>
+				<button type="submit" class="btn btn-info col-8 col-lg-4 m-auto">Candidater</button>
+			</div>
 		</form>
-	</section>
+        <?php } ?> 
 
-	<!-- Connexion -->
-	<section>
-		<form action="login_post.php" method="POST">
-		<div class="container col-lg-6">
-			<h1>Connexion</h1>
-			<p>Bon retour parmi nous!</p>
-			<hr>
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Entrer Email" name="email" id="email" class="form-control" required>
+        </div>
 
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Entrer Password" name="psw" id="psw"  class="form-control" required>
-			<hr>
-			<button type="submit" class="btn btn-info">Connexion</button>
-		</div>
-		</form>
-	</section>
+		
+      </div>
+	</section><!-- End Sevices Section -->
+	
 	<?php include('footer.php');?>
 </body>
 </html>
