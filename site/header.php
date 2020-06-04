@@ -4,15 +4,15 @@
 $distant = 'http://ltran.eemi.tech/Lionel/workshop_eemi_social_club';
 $local = 'http://localhost/workshop_eemi_social_club';
 
-$base_url = $distant; 
-$base_asso = $distant."/site/associations.php";
-$base_calendar = $distant."/site/calendrier.php";
-$base_deco = $distant."/site/deco.php";
-$base_register = $distant."/site/register.php"; 
-$base_img = $distant."/assets/img/logo.png"; 
+$base_url = $local; 
+$base_asso = $local."/site/associations.php";
+$base_calendar = $local."/site/calendrier.php";
+$base_deco = $local."/site/deco.php";
+$base_register = $local."/site/register.php"; 
+$base_img = $local."/assets/img/logo.png"; 
 
 // Logged
-$base_asso_perso = $distant."/site/asso_perso.php"; 
+$base_asso_perso = $local."/site/asso_perso.php"; 
 
 ?>
 <header id="header" class="fixed-top">
