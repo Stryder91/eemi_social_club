@@ -76,7 +76,7 @@
 					<li class="na">Massa ultricies mi</li>
 				</ul>
 				<div class="btn-wrap">
-					<a href="#" class="btn-buy">Rejoindre!</a>
+					<a href="payment.php" class="btn-buy">Rejoindre!</a>
 				</div>
 				</div>
 			</div>
