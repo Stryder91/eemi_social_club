@@ -26,38 +26,19 @@
 </head>
 <body>
 	<?php include('header.php');?>
-	<!-- Inscription -->
-	<section>
-		<form action="register_post.php" method="POST">
-		<div class="container mt-5 pt-5 col-lg-6">
-			<h1>Inscription</h1>
-			<p>Rejoignez nous!</p>
-			<hr>
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Entrer Email" name="email" id="email" class="form-control" required>
-
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Entrer Password" name="psw" id="psw"  class="form-control" required>
-			<hr>
-
-			<p>En cliquant sur s'inscrire vous acceptez nos <a href="#"> termes & conditions</a>.</p>
-			<button type="submit" class="btn btn-info">S'inscrire</button>
-		</div>
-		</form>
-	</section>
 
 	<!-- Connexion -->
 	<section>
 		<form action="login_post.php" method="POST">
-		<div class="container col-lg-6">
+		<div class="container col-lg-6 mt-5 pt-5">
 			<h1>Connexion</h1>
 			<p>Bon retour parmi nous!</p>
 			<hr>
 			<label for="email"><b>Email</b></label>
 			<input type="text" placeholder="Entrer Email" name="email" id="email" class="form-control" required>
 
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Entrer Password" name="psw" id="psw"  class="form-control" required>
+			<label for="psw" class="pt-5"><b>Mot de passe</b></label>
+			<input type="password" placeholder="Entrer Mot de passe" name="psw" id="psw"  class="form-control" required>
 			<hr>
 			<button type="submit" class="btn btn-info">Connexion</button>
 		</div>

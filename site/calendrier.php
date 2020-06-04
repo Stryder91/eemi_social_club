@@ -26,7 +26,8 @@
 <body>
 	<?php include('header.php');?>
 	 <!-- ======= Services Section ======= -->
-	 <section>
+	 <section class="blue-perso">
+	 	<h1 class="text-center m-auto pt-5">Calendrier des prochains évènements</h1>
 		<div id='wrap' class="mt-5">
 
 		<div id='calendar'></div>

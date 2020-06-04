@@ -1,4 +1,6 @@
-<?php include("../admin/fonctions.php"); ?>
+<?php include("../admin/fonctions.php"); 
+	$myId = $_GET['id'];
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -26,21 +28,18 @@
 <body>
 	<?php include('header.php');?>
 	 <!-- ======= Services Section ======= -->
-	 <section id="services" class="services section-bg mt-5">
-      <div class="container pt-5">
+	 <section id="services" class="services section-bg">
+      <div class="container py-5">
 
-        <div class="section-title">
-          <h2>Nos associations</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
 		<?php 
-         $sql = "select * from associations";
-         $query = mysqli_query($lien,$sql);
-         while ($result = mysqli_fetch_assoc($query)){
+		
+		$sql = "select * from associations where _id_asso='$myId'";
+		$query = mysqli_query($lien,$sql);
+		$result = mysqli_fetch_assoc($query);
         ?>
-			<div class="col-lg-4 col-md-6 d-flex align-items-stretch"  data-aos-delay="100">
+			<div class="d-flex"  data-aos-delay="100">
 			<div class="icon-box iconbox-blue">
 				<div class="icon">
 				<img style="width: 100%;" src="<?php echo $result['logo_asso'];?>" alt="logo">
@@ -51,16 +50,43 @@
 				</div>
 				<h4><?php echo $result['name_asso'];?></h4>
 				<p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-				<a href="asso_public.php?id=<?php echo $result['_id_asso'];?>">
-					<button class="btn btn-primary mt-5">Voir plus</button>
-				</a>
 			</div>
 			</div>
-        <?php } ?> 
+		</div>
+		<!-- ======= Pricing Section ======= -->
+		<section id="pricing" class="pricing">
+		<div class="container">
 
-        </div>
+			<div class="section-title">
+			<h2>Rejoindre cette asso' ?</h2>
+			<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+			</div>
 
-      </div>
+			<div class="row d-flex justify-content-center">
+
+			<div class="col-lg-4 col-md-6">
+				<div class="box">
+				<h3>Membre</h3>
+				<h4><sup>$</sup>19<span> / month</span></h4>
+				<ul>
+					<li>Aida dere</li>
+					<li>Nec feugiat nisl</li>
+					<li>Nulla at volutpat dola</li>
+					<li class="na">Pharetra massa</li>
+					<li class="na">Massa ultricies mi</li>
+				</ul>
+				<div class="btn-wrap">
+					<a href="#" class="btn-buy">Rejoindre!</a>
+				</div>
+				</div>
+			</div>
+
+			</div>
+
+		</div>
+		</section><!-- End Pricing Section -->
+		
+	</div>
 	</section><!-- End Sevices Section -->
 	
 	<?php include('footer.php');?>
