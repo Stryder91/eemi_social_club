@@ -84,6 +84,7 @@
 
       <div class="row content">
         <div class="col-lg-6">
+          
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
             magna aliqua.
@@ -113,7 +114,7 @@
       <div class="text-center">
         <h3>Demander kit d'installation</h3>
         <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <input type="text" name="" id="" placeholder>
+        <input class="form-control" type="text" name="" id="" placeholder>
         <a class="cta-btn" href="#">Demander</a>
       </div>
     </div>
@@ -382,6 +383,174 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    (function() {
+    var questions = [{
+      question: "Ce soir c'est soirée, tu es",
+      choices: ["En train de créer des couples", "En train de suer sur le dancefloor", "Ton esprit et ta culture", 
+      "Redif de la finale de la coupe du monde", "Petit short, tu ne rates pas le leg day"],
+      correctAnswer: 2
+    }, {
+      question: "Ton film préféré",
+      choices:  ["En train de créer des couples", "En train de suer sur le dancefloor", "Ton esprit et ta culture", 
+      "Redif de la finale de la coupe du monde", "Petit short, tu ne rates pas le leg day"],
+      correctAnswer: 4
+    }, {
+      question: "Au quotidien, tu préfères entretenir",
+      choices:  ["En train de créer des couples", "En train de suer sur le dancefloor", "Ton esprit et ta culture", 
+      "Redif de la finale de la coupe du monde", "Petit short, tu ne rates pas le leg day"],
+      correctAnswer: 0
+    }, {
+      question: "Soirée chill devant la télé, t'es plutôt",
+      choices:  ["En train de créer des couples", "En train de suer sur le dancefloor", "Ton esprit et ta culture", 
+      "Redif de la finale de la coupe du monde", "Petit short, tu ne rates pas le leg day"],
+      correctAnswer: 3
+    }, {
+      question: "Ton outfit idéal?",
+      choices: [20, 30, 40, 50, 64],
+      correctAnswer: 4
+    }];
+
+    var questionCounter = 0; //Tracks question number
+    var selections = []; //Array containing user choices
+    var quiz = $('#quiz'); //Quiz div object
+
+    // Display initial question
+    displayNext();
+
+    // Click handler for the 'next' button
+    $('#next').on('click', function (e) {
+      e.preventDefault();
+      
+      // Suspend click listener during fade animation
+      if(quiz.is(':animated')) {        
+      return false;
+      }
+      choose();
+      
+      // If no user selection, progress is stopped
+      if (isNaN(selections[questionCounter])) {
+      alert('Please make a selection!');
+      } else {
+      questionCounter++;
+      displayNext();
+      }
+    });
+
+    // Click handler for the 'prev' button
+    $('#prev').on('click', function (e) {
+      e.preventDefault();
+      
+      if(quiz.is(':animated')) {
+      return false;
+      }
+      choose();
+      questionCounter--;
+      displayNext();
+    });
+
+    // Click handler for the 'Start Over' button
+    $('#start').on('click', function (e) {
+      e.preventDefault();
+      
+      if(quiz.is(':animated')) {
+      return false;
+      }
+      questionCounter = 0;
+      selections = [];
+      displayNext();
+      $('#start').hide();
+    });
+
+    // Animates buttons on hover
+    $('.button').on('mouseenter', function () {
+      $(this).addClass('active');
+    });
+    $('.button').on('mouseleave', function () {
+      $(this).removeClass('active');
+    });
+
+    // Creates and returns the div that contains the questions and 
+    // the answer selections
+    function createQuestionElement(index) {
+      var qElement = $('<div>', {
+      id: 'question'
+      });    
+      var question = $('<p>').append(questions[index].question);
+      qElement.append(question);
+      
+      var radioButtons = createRadios(index);
+      qElement.append(radioButtons);
+      
+      return qElement;
+    }
+
+    // Creates a list of the answer choices as radio inputs
+    function createRadios(index) {
+      var radioList = $('<ul class="list-group my-3">');
+      var item;
+      var input = '';
+      for (var i = 0; i < questions[index].choices.length; i++) {
+      item = $('<li class="list-group-item">');
+      input = '<input id="quizzo'+i+'" type="radio" name="answer" value=' + i + ' />';
+      input += '<label for=quizzo'+i+' class="px-5">' + questions[index].choices[i] + '</label>';
+      item.append(input);
+      radioList.append(item);
+      }
+      return radioList;
+    }
+
+    // Reads the user selection and pushes the value to an array
+    function choose() {
+      selections[questionCounter] = +$('input[name="answer"]:checked').val();
+    }
+
+    // Displays next requested element
+    function displayNext() {
+      quiz.fadeOut(function() {
+      $('#question').remove();
+      
+      if(questionCounter < questions.length){
+        var nextQuestion = createQuestionElement(questionCounter);
+        quiz.append(nextQuestion).fadeIn();
+        if (!(isNaN(selections[questionCounter]))) {
+        $('input[value='+selections[questionCounter]+']').prop('checked', true);
+        }
+        
+        // Controls display of 'prev' button
+        if(questionCounter === 1){
+        $('#prev').show();
+        } else if(questionCounter === 0){
+        
+        $('#prev').hide();
+        $('#next').show();
+        }
+      }else {
+        var scoreElem = displayScore();
+        quiz.append(scoreElem).fadeIn();
+        $('#next').hide();
+        $('#prev').hide();
+        $('#start').show();
+      }
+      });
+    }
+
+    // Computes score and returns a paragraph element to be displayed
+    function displayScore() {
+      var score = $('<p>',{id: 'question'});
+      
+      var numCorrect = 0;
+      for (var i = 0; i < selections.length; i++) {
+        if (selections[i] === questions[i].correctAnswer) {
+          numCorrect++;
+        }
+      }
+      
+      score.append('Tu es fait pour rejoindre cette association : ....');
+      return score;
+    }
+    })();
+  </script>
 </body>
 
 </html>

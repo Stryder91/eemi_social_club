@@ -1,5 +1,5 @@
 <section class="container mt-5 pt-5" id="quizz">
-	<div class="section-title mt-5 pt-5">
+	<!-- <div class="section-title mt-5 pt-5">
 		<h2>Pour quel association es-tu fait ?</h2>
 	</div>
 	<div class="progress">
@@ -12,5 +12,13 @@
 	<li class="list-group-item">Morbi leo risus</li>
 	<li class="list-group-item">Porta ac consectetur ac</li>
 	</ul>
-	<button class="btn btn-info">Suivant</button>
+	<button class="btn btn-info">Suivant</button> -->
+	<div class="section-title mt-5 pt-5">
+		<h2>Découvres pour quel asso es-tu fais !</h2>
+	</div>
+	<div id='container'>
+		<div id='quiz'></div>
+		<div class='btn btn-warning white' id='prev'><a class="white" href='#'>Prev</a></div>
+		<div class='btn btn-success white' id='next'><a class="white" href='#'>Next</a></div>
+	</div>
 </section>
